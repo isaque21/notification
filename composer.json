@@ -1,0 +1,24 @@
+{
+    "name": "isaque21/notification",
+    "description": "This is a library that uses composer as the basis for generating email notifications",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Isaque Alcantara",
+            "email": "isaque21@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "phpmailer/phpmailer": "v6.1.4"
+    },
+    "config": {
+    	"vendor-dir": "lib_ext"
+    },
+    "autoload": {
+    	"psr-4": {
+    		"Notification\\": "_app"
+    	}
+    }
+}
