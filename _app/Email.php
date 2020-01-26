@@ -12,18 +12,18 @@ class Email {
     public function __construct()
     {
         $this->mail = new PHPMailer(true);
-        $this->mail->SMTPDebug = 2;                      // Enable verbose debug output
+        $this->mail->SMTPDebug = 2;                                       // Enable verbose debug output
         $this->mail->isSMTP();                                            // Send using SMTP
-        $this->mail->Host       = 'mail.prismanotebook.com';                    // Set the SMTP server to send through
+        $this->mail->Host       = 'mail.testemailcom';                    // Set the SMTP server to send through
         $this->mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $this->mail->Username   = 'comercial@prismanotebook.com.br';                     // SMTP username
-        $this->mail->Password   = '123@qwe';                               // SMTP password
+        $this->mail->Username   = 'email@testemail.com';                  // SMTP username
+        $this->mail->Password   = '123456';                               // SMTP password
         $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
         $this->mail->Port       = 587;
         $this->mail->CharSet    = 'utf-8';
         $this->mail->setLanguage('br');
         $this->mail->isHTML(true);
-        $this->mail->setFrom('ialcantara@faeterj-petropolis.edu.br', 'Eu Isaque');
+        $this->mail->setFrom('email@testemail.com', 'Me test');
     }
 
     public function sendMail($subject, $body, $replyEmail, $replyName, $addressEmail, $addressName){
