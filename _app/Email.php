@@ -26,7 +26,7 @@ class Email {
         $this->mail->setFrom($setFromEmail, $setFromName);
     }
 
-    public function sendMail($subject, $body, $replyEmail, $replyName, $addressEmail, $addressName){
+    public function sendEmail($subject, $body, $replyEmail, $replyName, $addressEmail, $addressName){
         $this->mail->Subject = (string) $subject;
         $this->mail->Body = $body;
 
