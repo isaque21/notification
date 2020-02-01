@@ -9,21 +9,21 @@ class Email {
 
     private $mail = \stdClass::class;
 
-    public function __construct()
+    public function __construct($smtpDebug, $host, $user, $pass, $smtpSecure, $port, $setFromEmail, $setFromName)
     {
         $this->mail = new PHPMailer(true);
-        $this->mail->SMTPDebug = 2;                                       // Enable verbose debug output
-        $this->mail->isSMTP();                                            // Send using SMTP
-        $this->mail->Host       = 'mail.testemailcom';                    // Set the SMTP server to send through
-        $this->mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $this->mail->Username   = 'email@testemail.com';                  // SMTP username
-        $this->mail->Password   = '123456';                               // SMTP password
-        $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-        $this->mail->Port       = 587;
+        $this->mail->SMTPDebug = $smtpDebug;                                       // Enable verbose debug output
+        $this->mail->isSMTP();                                                     // Send using SMTP
+        $this->mail->Host       = $host;                                           // Set the SMTP server to send through
+        $this->mail->SMTPAuth   = true;                                            // Enable SMTP authentication
+        $this->mail->Username   = $user;                                           // SMTP username
+        $this->mail->Password   = $pass;                                           // SMTP password
+        $this->mail->SMTPSecure = $smtpSecure;                                     // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+        $this->mail->Port       = $port;
         $this->mail->CharSet    = 'utf-8';
         $this->mail->setLanguage('br');
         $this->mail->isHTML(true);
-        $this->mail->setFrom('email@testemail.com', 'Me test');
+        $this->mail->setFrom($setFromEmail, $setFromName);
     }
 
     public function sendMail($subject, $body, $replyEmail, $replyName, $addressEmail, $addressName){
@@ -35,7 +35,7 @@ class Email {
 
         try{
             $this->mail->send();
-        }catch (\Exception $e ){
+        }catch (Exception $e ){
             echo "Erro ao enviar o email: {$this->mail->ErrorInfo}, {$e->getMessage()}";
         }
 
